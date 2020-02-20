@@ -11,6 +11,7 @@ import {
 } from '@primer/components';
 import SwapiService from '../../services/swapi';
 import Spinner from '../Spinner';
+import ErrorIndicator from '../ErrorIndicator';
 
 const HeroContent = ({ planet }) => {
 	const {
@@ -56,6 +57,7 @@ class Hero extends Component {
 		this.state = {
 			'planet': {},
 			'loading': true,
+			'error': false,
 		};
 		this.updatePlanet();
 	}
@@ -67,20 +69,35 @@ class Hero extends Component {
 		});
 	}
 
+	onError = () => {
+		this.setState({
+			'error': true,
+			'loading': false,
+		});
+	}
+
 	updatePlanet() {
 		const id = Math.floor(Math.random() * 18) + 1;
 
 		this.swapiService
 			.getPlanet(id)
-			.then(this.onPlanetLoaded);
+			.then(this.onPlanetLoaded)
+			.catch(this.onError);
 	}
 
 	render() {
-		const { planet, loading } = this.state;
+		const { planet, loading, error } = this.state;
+
+		const hasData = !(loading || error);
+		const errorMessage = error ? <ErrorIndicator /> : null;
+		const spinner = loading ? <Spinner /> : null;
+		const content = hasData ? <HeroContent planet={planet} /> : null;
 
 		return (
 			<Flex bg="blue.1" p={2} flexWrap="wrap">
-				{loading ? <Spinner /> : <HeroContent planet={planet} />}
+				{errorMessage}
+				{spinner}
+				{content}
 			</Flex>
 		);
 	}
