@@ -3,6 +3,8 @@ import {
 	createGlobalStyle,
 	StyleSheetManager,
 } from 'styled-components';
+import { BaseStyles } from '@primer/components';
+import Hero from '../Hero';
 
 
 const ResetStyles = createGlobalStyle`
@@ -30,18 +32,18 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			'data': 'Star Wars Depot',
+			// 'data': 'Star Wars Depot',
 		};
 	}
 
 	render() {
-		const { data } = this.state;
+		// const { data } = this.state;
 		return (
 			<StyleSheetManager disableVendorPrefixes>
-				<>
+				<BaseStyles>
 					<ResetStyles />
-					<div>{data}</div>
-				</>
+					<Hero />
+				</BaseStyles>
 			</StyleSheetManager>
 		);
 	}
