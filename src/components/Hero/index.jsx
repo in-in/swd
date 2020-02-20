@@ -15,13 +15,13 @@ class Hero extends Component {
 	constructor() {
 		super();
 		this.state = {
-			'diameter': null,
-			'id': null,
-			'name': null,
-			'population': null,
-			'rotationPeriod': null,
+			'planet': {},
 		};
 		this.updatePlanet();
+	}
+
+	onPlanetLoaded = (planet) => {
+		this.setState({ planet });
 	}
 
 	updatePlanet() {
@@ -29,20 +29,14 @@ class Hero extends Component {
 
 		this.swapiService
 			.getPlanet(id)
-			.then((planet) => {
-				this.setState({
-					'diameter': planet.diameter,
-					'id': id,
-					'name': planet.name,
-					'population': planet.population,
-					'rotationPeriod': planet.rotation_period,
-				});
-			});
+			.then(this.onPlanetLoaded);
 	}
 
 	render() {
 		const {
-			diameter, id, name, population, rotationPeriod,
+			'planet': {
+				diameter, id, name, population, rotationPeriod,
+			},
 		} = this.state;
 
 		return (
