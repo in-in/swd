@@ -1,17 +1,20 @@
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-	Avatar,
-	Box,
-	FilterList,
-	Flex,
-	Heading,
-} from '@primer/components';
+	Card,
+	Layout,
+	List,
+	Spin,
+	Typography,
+
+} from 'antd';
 import SwapiService from '../../services/swapi';
-import Spinner from '../Spinner';
 import ErrorIndicator from '../ErrorIndicator';
+
+const { Meta } = Card;
+const { Title } = Typography;
+const { Item } = List;
 
 const HeroContent = ({ planet }) => {
 	const {
@@ -20,31 +23,33 @@ const HeroContent = ({ planet }) => {
 
 	return (
 		<>
-			<Flex flexShrink={0}>
-				<Avatar
-					flexShrink={0}
-					src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-					size={192}
-					alt={`Planet ${name}`}
+			<Card
+				style={{ 'width': 300 }}
+				cover={(
+					<img
+						src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+						alt={`Planet ${name}`}
+					/>
+				)}
+			>
+				<Meta
+					title={<Title level={4}>{name}</Title>}
 				/>
-			</Flex>
-			<Box px={2} bg="blue.2">
-				<Heading as="h4" fontSize={2}>{name}</Heading>
-				<FilterList>
-					<FilterList.Item as="div">
+				<List>
+					<Item>
 						<span>Diameter: </span>
 						<span>{diameter}</span>
-					</FilterList.Item>
-					<FilterList.Item as="div">
+					</Item>
+					<Item>
 						<span>Population: </span>
 						<span>{population}</span>
-					</FilterList.Item>
-					<FilterList.Item as="div">
+					</Item>
+					<Item>
 						<span>Rotation Period: </span>
 						<span>{rotationPeriod}</span>
-					</FilterList.Item>
-				</FilterList>
-			</Box>
+					</Item>
+				</List>
+			</Card>,
 		</>
 	);
 };
@@ -94,15 +99,15 @@ class Hero extends Component {
 
 		const hasData = !(loading || error);
 		const errorMessage = error ? <ErrorIndicator /> : null;
-		const spinner = loading ? <Spinner /> : null;
+		const spinner = loading ? <Spin size="large" /> : null;
 		const content = hasData ? <HeroContent planet={planet} /> : null;
 
 		return (
-			<Flex bg="blue.1" p={2} flexWrap="wrap">
+			<Layout>
 				{errorMessage}
 				{spinner}
 				{content}
-			</Flex>
+			</Layout>
 		);
 	}
 }
