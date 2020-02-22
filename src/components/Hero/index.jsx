@@ -59,7 +59,11 @@ class Hero extends Component {
 			'loading': true,
 			'error': false,
 		};
+	}
+
+	componentDidMount() {
 		this.updatePlanet();
+		this.interval = setInterval(this.updatePlanet, 4000);
 	}
 
 	onPlanetLoaded = (planet) => {
@@ -76,8 +80,8 @@ class Hero extends Component {
 		});
 	}
 
-	updatePlanet() {
-		const id = Math.floor(Math.random() * 18) + 1;
+	updatePlanet = () => {
+		const id = Math.floor(Math.random() * 18) + 2;
 
 		this.swapiService
 			.getPlanet(id)
