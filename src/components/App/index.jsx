@@ -5,6 +5,8 @@ import {
 } from 'styled-components';
 import { BaseStyles } from '@primer/components';
 import Hero from '../Hero';
+import List from '../List';
+import 'antd/dist/antd.css';
 
 
 const ResetStyles = createGlobalStyle`
@@ -32,8 +34,14 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			// 'data': 'Star Wars Depot',
+			'selectedPerson': null,
 		};
+	}
+
+	onPersonSelected = (id) => {
+		this.setState({
+			'selectedPerson': id,
+		});
 	}
 
 	render() {
@@ -43,6 +51,7 @@ class App extends Component {
 				<BaseStyles>
 					<ResetStyles />
 					<Hero />
+					<List onItemSelected={this.onPersonSelected} />
 				</BaseStyles>
 			</StyleSheetManager>
 		);
