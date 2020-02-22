@@ -1,21 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Flex } from '@primer/components';
-import Octicon, { Alert } from '@primer/octicons-react';
+import { Icon, Typography } from 'antd';
 
-const Header = styled.h4`
-	font-size: 2rem;
-	color: crimson;
-	text-transform: uppercase;
-`;
+const { Title } = Typography;
 
 const ErrorIndicator = () => (
-	<Flex flexDirection="column" alignItems="center" width="100%">
-		<Octicon icon={Alert} size="large" ariaLabel="Alert" />
-		<Header>Boom!</Header>
+	<>
+		<Icon type="alert" theme="twoTone" style={{ 'fontSize': '3em' }} />
+		<Title level={4}>Boom!</Title>
 		<span>something went wrong</span>
 		<span>(but we already sent droids to fix it)</span>
-	</Flex>
+	</>
 );
 
 export default ErrorIndicator;
