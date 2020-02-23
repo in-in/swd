@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import {
 	Card,
 	Layout,
 	List,
 	Spin,
 	Typography,
-
 } from 'antd';
 import SwapiService from '../../services/swapi';
 import ErrorIndicator from '../ErrorIndicator';
@@ -49,7 +47,7 @@ const HeroContent = ({ planet }) => {
 						<span>{rotationPeriod}</span>
 					</Item>
 				</List>
-			</Card>,
+			</Card>
 		</>
 	);
 };

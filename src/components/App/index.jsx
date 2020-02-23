@@ -28,7 +28,8 @@ class App extends Component {
 		return (
 			<>
 				<Header>header</Header>
-				<Content><Hero />
+				<Content>
+					<Hero />
 					<List onItemSelected={this.onPersonSelected} />
 				</Content>
 				<Footer>footer</Footer>
