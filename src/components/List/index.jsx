@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { List as Ls, Spin } from 'antd';
+import PropTypes from 'prop-types';
+import { Button, List as Ls, Spin } from 'antd';
 import SwapiService from '../../services/swapi';
 
 class List extends Component {
@@ -22,18 +23,23 @@ class List extends Component {
 			});
 	}
 
-	static renderItems(arr) {
+	renderItems(arr) {
+		const { onItemSelected } = this.props;
 		return arr.map(({ id, name }) => (
-			<Ls.Item
-				key={id}
-			>{name}
+			<Ls.Item key={id}>
+				<Button
+					block
+					type="link"
+					onClick={() => onItemSelected(id)}
+				>{name}
+				</Button>
 			</Ls.Item>
 		));
 	}
 
 	render() {
 		const { peopleList } = this.state;
-		const items = List.renderItems(peopleList);
+		const items = this.renderItems(peopleList);
 
 		if (!peopleList) {
 			return <Spin />;
@@ -46,5 +52,9 @@ class List extends Component {
 		);
 	}
 }
+
+List.propTypes = {
+	'onItemSelected': PropTypes.func.isRequired,
+};
 
 export default List;
