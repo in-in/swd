@@ -14,7 +14,7 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			'selectedPerson': 1,
+			'selectedPerson': '1',
 		};
 	}
 

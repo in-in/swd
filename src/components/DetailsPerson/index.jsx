@@ -105,7 +105,7 @@ class DetailsPerson extends Component {
 }
 
 DetailsPerson.propTypes = {
-	'personID': PropTypes.number.isRequired,
+	'personID': PropTypes.string.isRequired,
 };
 
 export default DetailsPerson;
