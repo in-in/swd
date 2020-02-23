@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
 	Card,
+	Layout,
 	List,
+	Spin,
 	Typography,
 } from 'antd';
 import SwapiService from '../../services/swapi';
@@ -18,6 +20,7 @@ class DetailsPerson extends Component {
 		super();
 		this.state = {
 			'person': {},
+			'loading': true,
 		};
 	}
 
@@ -42,13 +45,17 @@ class DetailsPerson extends Component {
 		this.swapiService
 			.getPerson(personID)
 			.then((person) => {
-				this.setState({ person });
+				this.setState({
+					person,
+					'loading': false,
+				});
 			});
 	}
 
 	render() {
 		const {
 			person,
+			loading,
 			'person': {
 				birthYear, eyeColor, gender, id, name,
 			},
@@ -59,33 +66,40 @@ class DetailsPerson extends Component {
 		}
 
 		return (
-			<Card
-				style={{ 'width': 300 }}
-				cover={(
-					<img
-						src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
-						alt={`Person ${name}.`}
-					/>
-				)}
-			>
-				<Meta
-					title={<Title level={4}>{name}</Title>}
-				/>
-				<List>
-					<Item>
-						<span>Birth Year: </span>
-						<span>{birthYear}</span>
-					</Item>
-					<Item>
-						<span>Eye Color: </span>
-						<span>{eyeColor}</span>
-					</Item>
-					<Item>
-						<span>Gender: </span>
-						<span>{gender}</span>
-					</Item>
-				</List>
-			</Card>
+			<Layout>
+				{loading
+					? <Spin size="large" />
+					: (
+						<Card
+							style={{ 'width': 300 }}
+							cover={(
+								<img
+									src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+									alt="Person ."
+								/>
+							)}
+						>
+							<Meta
+								title={<Title level={4}>{name}</Title>}
+							/>
+							<List>
+								<Item>
+									<span>Birth Year: </span>
+									<span>{birthYear}</span>
+								</Item>
+								<Item>
+									<span>Eye Color: </span>
+									<span>{eyeColor}</span>
+								</Item>
+								<Item>
+									<span>Gender: </span>
+									<span>{gender}</span>
+								</Item>
+							</List>
+						</Card>
+					)}
+
+			</Layout>
 		);
 	}
 }
