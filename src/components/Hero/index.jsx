@@ -20,35 +20,33 @@ const HeroContent = ({ planet }) => {
 	} = planet;
 
 	return (
-		<>
-			<Card
-				style={{ 'width': 300 }}
-				cover={(
-					<img
-						src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-						alt={`Planet ${name}`}
-					/>
-				)}
-			>
-				<Meta
-					title={<Title level={4}>{name}</Title>}
+		<Card
+			style={{ 'width': 300 }}
+			cover={(
+				<img
+					src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+					alt={`Planet ${name}`}
 				/>
-				<List>
-					<Item>
-						<span>Diameter: </span>
-						<span>{diameter}</span>
-					</Item>
-					<Item>
-						<span>Population: </span>
-						<span>{population}</span>
-					</Item>
-					<Item>
-						<span>Rotation Period: </span>
-						<span>{rotationPeriod}</span>
-					</Item>
-				</List>
-			</Card>
-		</>
+			)}
+		>
+			<Meta
+				title={<Title level={4}>{name}</Title>}
+			/>
+			<List>
+				<Item>
+					<span>Diameter: </span>
+					<span>{diameter}</span>
+				</Item>
+				<Item>
+					<span>Population: </span>
+					<span>{population}</span>
+				</Item>
+				<Item>
+					<span>Rotation Period: </span>
+					<span>{rotationPeriod}</span>
+				</Item>
+			</List>
+		</Card>
 	);
 };
 
