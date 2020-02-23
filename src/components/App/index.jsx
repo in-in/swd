@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Layout } from 'antd';
 import Hero from '../Hero';
 import List from '../List';
+import DetailsPerson from '../DetailsPerson';
 import 'antd/dist/antd.css';
 import '../../styles/style.css';
 
@@ -13,7 +14,7 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			'selectedPerson': null,
+			'selectedPerson': 7,
 		};
 	}
 
@@ -24,13 +25,14 @@ class App extends Component {
 	}
 
 	render() {
-		// const { data } = this.state;
+		const { selectedPerson } = this.state;
 		return (
 			<>
 				<Header>header</Header>
 				<Content>
 					<Hero />
 					<List onItemSelected={this.onPersonSelected} />
+					<DetailsPerson personID={selectedPerson} />
 				</Content>
 				<Footer>footer</Footer>
 			</>
