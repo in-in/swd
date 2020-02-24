@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, List as Ls, Spin } from 'antd';
-import SwapiService from '../../services/swapi';
 
 class List extends Component {
-	swapiService = new SwapiService();
-
 	constructor() {
 		super();
 		this.state = {
-			'peopleList': [],
+			'itemList': [],
 		};
 	}
 
 	componentDidMount() {
-		this.swapiService
-			.getAllPeople()
-			.then((peopleList) => {
+		const { getData } = this.props;
+
+		getData()
+			.then((itemList) => {
 				this.setState({
-					peopleList,
+					itemList,
 				});
 			});
 	}
@@ -38,10 +36,10 @@ class List extends Component {
 	}
 
 	render() {
-		const { peopleList } = this.state;
-		const items = this.renderItems(peopleList);
+		const { itemList } = this.state;
+		const items = this.renderItems(itemList);
 
-		if (!peopleList) {
+		if (!itemList) {
 			return <Spin />;
 		}
 
@@ -55,6 +53,7 @@ class List extends Component {
 
 List.propTypes = {
 	'onItemSelected': PropTypes.func.isRequired,
+	'getData': PropTypes.func.isRequired,
 };
 
 export default List;

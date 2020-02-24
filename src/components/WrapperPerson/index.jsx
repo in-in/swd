@@ -3,8 +3,11 @@ import { Layout } from 'antd';
 import List from '../List';
 import DetailsPerson from '../DetailsPerson';
 import ErrorIndicator from '../ErrorIndicator';
+import SwapiService from '../../services/swapi';
 
 class WrapperPerson extends Component {
+	swapiService = new SwapiService();
+
 	constructor() {
 		super();
 		this.state = {
@@ -32,7 +35,10 @@ class WrapperPerson extends Component {
 
 		return (
 			<Layout>
-				<List onItemSelected={this.onPersonSelected} />
+				<List
+					onItemSelected={this.onPersonSelected}
+					getData={this.swapiService.getAllPeople}
+				/>
 				<DetailsPerson personID={selectedPerson} />
 			</Layout>
 		);
