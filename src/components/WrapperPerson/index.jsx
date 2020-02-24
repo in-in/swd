@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Layout, Typography } from 'antd';
+import { Typography } from 'antd';
+import Row from '../Row';
 import List from '../List';
 import DetailsPerson from '../DetailsPerson';
 import ErrorIndicator from '../ErrorIndicator';
@@ -31,27 +32,32 @@ class WrapperPerson extends Component {
 	render() {
 		const { selectedPerson, hasError } = this.state;
 
+		const ItemList = (
+			<List
+				onItemSelected={this.onPersonSelected}
+				getData={this.swapiService.getAllPeople}
+				renderItem={
+					({ name, gender, birthYear }) => (
+						<>
+							<Text strong>{name}</Text>
+							<Text code>{gender}</Text>
+							<Text code>{birthYear}</Text>
+						</>
+					)
+				}
+			/>
+		);
+
+		const Details = (
+			<DetailsPerson personID={selectedPerson} />
+		);
+
 		if (hasError) {
 			return <ErrorIndicator />;
 		}
 
 		return (
-			<Layout>
-				<List
-					onItemSelected={this.onPersonSelected}
-					getData={this.swapiService.getAllPeople}
-					renderItem={
-						({ name, gender, birthYear }) => (
-							<>
-								<Text strong>{name}</Text>
-								<Text code>{gender}</Text>
-								<Text code>{birthYear}</Text>
-							</>
-						)
-					}
-				/>
-				<DetailsPerson personID={selectedPerson} />
-			</Layout>
+			<Row left={ItemList} right={Details} />
 		);
 	}
 }
