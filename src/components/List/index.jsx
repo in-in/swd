@@ -24,11 +24,11 @@ class List extends Component {
 	}
 
 	renderItems(arr) {
-		const { onItemSelected, renderItem } = this.props;
+		const { onItemSelected, children } = this.props;
 
 		return arr.map((item) => {
 			const { id } = item;
-			const label = renderItem(item);
+			const label = children(item);
 
 			return (
 				<Item key={id}>
@@ -60,9 +60,9 @@ class List extends Component {
 }
 
 List.propTypes = {
+	'children': PropTypes.func.isRequired,
 	'getData': PropTypes.func.isRequired,
 	'onItemSelected': PropTypes.func.isRequired,
-	'renderItem': PropTypes.func.isRequired,
 };
 
 export default List;

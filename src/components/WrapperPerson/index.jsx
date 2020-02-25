@@ -3,7 +3,7 @@ import { Typography } from 'antd';
 import Row from '../Row';
 import List from '../List';
 import DetailsPerson from '../DetailsPerson';
-import ErrorIndicator from '../ErrorIndicator';
+import ErrorBoundary from '../ErrorBoundary';
 import SwapiService from '../../services/swapi';
 
 const { Text } = Typography;
@@ -15,12 +15,7 @@ class WrapperPerson extends Component {
 		super();
 		this.state = {
 			'selectedPerson': '1',
-			'hasError': false,
 		};
-	}
-
-	componentDidCatch() {
-		this.setState({ 'hasError': true });
 	}
 
 	onPersonSelected = (id) => {
@@ -30,13 +25,14 @@ class WrapperPerson extends Component {
 	}
 
 	render() {
-		const { selectedPerson, hasError } = this.state;
+		const { selectedPerson } = this.state;
 
 		const ItemList = (
 			<List
 				onItemSelected={this.onPersonSelected}
 				getData={this.swapiService.getAllPeople}
-				renderItem={
+			>
+				{
 					({ name, gender, birthYear }) => (
 						<>
 							<Text strong>{name}</Text>
@@ -45,19 +41,17 @@ class WrapperPerson extends Component {
 						</>
 					)
 				}
-			/>
+			</List>
 		);
 
 		const Details = (
 			<DetailsPerson personID={selectedPerson} />
 		);
 
-		if (hasError) {
-			return <ErrorIndicator />;
-		}
-
 		return (
-			<Row left={ItemList} right={Details} />
+			<ErrorBoundary>
+				<Row left={ItemList} right={Details} />
+			</ErrorBoundary>
 		);
 	}
 }
