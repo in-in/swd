@@ -1,68 +1,43 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, List as Ls, Spin } from 'antd';
+import { Button, List as Ls } from 'antd';
+import withData from '../../helpers/withData';
+import SwapiService from '../../services/swapi';
 
 const { Item } = Ls;
 
-class List extends Component {
-	constructor() {
-		super();
-		this.state = {
-			'itemList': [],
-		};
-	}
+const List = (props) => {
+	const { children, data, onItemSelected } = props;
 
-	componentDidMount() {
-		const { getData } = this.props;
-
-		getData()
-			.then((itemList) => {
-				this.setState({
-					itemList,
-				});
-			});
-	}
-
-	renderItems(arr) {
-		const { onItemSelected, children } = this.props;
-
-		return arr.map((item) => {
-			const { id } = item;
-			const label = children(item);
-
-			return (
-				<Item key={id}>
-					<Button
-						block
-						type="link"
-						onClick={() => onItemSelected(id)}
-					>{label}
-					</Button>
-				</Item>
-			);
-		});
-	}
-
-	render() {
-		const { itemList } = this.state;
-		const items = this.renderItems(itemList);
-
-		if (!itemList) {
-			return <Spin />;
-		}
+	const items = data.map((item) => {
+		const { id } = item;
+		const label = children(item);
 
 		return (
-			<Ls bordered>
-				{items}
-			</Ls>
+			<Item key={id}>
+				<Button
+					block
+					type="link"
+					onClick={() => onItemSelected(id)}
+				>{label}
+				</Button>
+			</Item>
 		);
-	}
-}
+	});
+
+	return (
+		<Ls bordered>
+			{items}
+		</Ls>
+	);
+};
 
 List.propTypes = {
 	'children': PropTypes.func.isRequired,
-	'getData': PropTypes.func.isRequired,
+	'data': PropTypes.arrayOf(PropTypes.object).isRequired,
 	'onItemSelected': PropTypes.func.isRequired,
 };
 
-export default List;
+const { getAllPeople } = new SwapiService();
+
+export default withData(List, getAllPeople);
