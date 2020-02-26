@@ -4,16 +4,21 @@ import { List } from 'antd';
 
 const { Item } = List;
 
-const Record = ({ field, label }) => (
+const Record = ({ item, field, label }) => (
 	<Item>
-		<span>{`${field}:`}</span>
 		<span>{label}</span>
+		<span>{item[field]}</span>
 	</Item>
 );
 
 Record.propTypes = {
 	'field': PropTypes.string.isRequired,
 	'label': PropTypes.string.isRequired,
+	'item': PropTypes.objectOf(PropTypes.string),
+};
+
+Record.defaultProps = {
+	'item': {},
 };
 
 export default Record;

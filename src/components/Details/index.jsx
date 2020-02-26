@@ -1,4 +1,4 @@
-import React, { Component, Children } from 'react';
+import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import {
 	Card,
@@ -85,7 +85,7 @@ class Details extends Component {
 							/>
 							<List>
 								{
-									Children.map(children, (child) => child)
+									Children.map(children, (child) => cloneElement(child, { item }))
 								}
 							</List>
 						</Card>

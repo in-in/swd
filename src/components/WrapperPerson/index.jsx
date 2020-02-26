@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Typography } from 'antd';
 import Row from '../Row';
 import List from '../List';
-import DetailsPerson from '../DetailsPerson';
+import Details from '../Details';
+import Record from '../Record';
 import ErrorBoundary from '../ErrorBoundary';
 import SwapiService from '../../services/swapi';
 
@@ -26,8 +27,12 @@ class WrapperPerson extends Component {
 
 	render() {
 		const { selectedPerson } = this.state;
+		const {
+			getPerson,
+			getPersonImage,
+		} = this.swapiService;
 
-		const ItemList = (
+		const left = (
 			<List
 				onItemSelected={this.onPersonSelected}
 				getData={this.swapiService.getAllPeople}
@@ -44,13 +49,21 @@ class WrapperPerson extends Component {
 			</List>
 		);
 
-		const Details = (
-			<DetailsPerson personID={selectedPerson} />
+
+		const right = (
+			<Details
+				getData={getPerson}
+				getImageURL={getPersonImage}
+				itemID={selectedPerson}
+			>
+				<Record field="gender" label="Gender" />
+				<Record field="eyeColor" label="Eye Color" />
+			</Details>
 		);
 
 		return (
 			<ErrorBoundary>
-				<Row left={ItemList} right={Details} />
+				<Row left={left} right={right} />
 			</ErrorBoundary>
 		);
 	}
