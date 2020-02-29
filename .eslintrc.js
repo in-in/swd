@@ -19,7 +19,7 @@ module.exports = {
 		'react/jsx-props-no-spreading': ['error', {
 			'html': 'enforce',
 			'custom': 'enforce',
-			'exceptions': ['View'],
+			'exceptions': ['View', 'Wrapped'],
 		}],
 	},
 };
