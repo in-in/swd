@@ -4,12 +4,10 @@ import { Typography } from 'antd';
 import List from '../List';
 import withData from '../../helpers/withData';
 import withSwapi from '../../helpers/withSwapi';
+import withChildFunction from '../../helpers/withChildFunction';
+import compose from '../../helpers/compose';
 
 const { Text } = Typography;
-
-const withChildFunction = (fn) => (
-	Wrapped,
-) => (props) => <Wrapped {...props}>{fn}</Wrapped>;
 
 const renderNameAndGender = ({ name, gender }) => (
 	<>
@@ -42,21 +40,23 @@ const mapStarshipMethodsToProps = (swapiService) => ({
 	'getData': swapiService.getAllStarships,
 });
 
-const ListPerson = withSwapi(mapPersonMethodsToProps)(
-	withData(
-		withChildFunction(renderNameAndGender)(List),
-	),
-);
-const ListPlanet = withSwapi(mapPlanetMethodsToProps)(
-	withData(
-		withChildFunction(renderNameAndDiameter)(List),
-	),
-);
-const ListStarship = withSwapi(mapStarshipMethodsToProps)(
-	withData(
-		withChildFunction(renderNameAndModel)(List),
-	),
-);
+const ListPerson = compose(
+	withSwapi(mapPersonMethodsToProps),
+	withData,
+	withChildFunction(renderNameAndGender),
+)(List);
+
+const ListPlanet = compose(
+	withSwapi(mapPlanetMethodsToProps),
+	withData,
+	withChildFunction(renderNameAndDiameter),
+)(List);
+
+const ListStarship = compose(
+	withSwapi(mapStarshipMethodsToProps),
+	withData,
+	withChildFunction(renderNameAndModel),
+)(List);
 
 renderNameAndGender.propTypes = {
 	'gender': PropTypes.string.isRequired,
