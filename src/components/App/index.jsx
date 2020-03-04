@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
 import Hero from '../Hero';
-import WrapperPerson from '../WrapperPerson';
+import Wrapper from '../Wrapper';
 import ErrorBoundary from '../ErrorBoundary';
 import { SwapiServiceProvider } from '../../services/swapi-context';
 import SwapiService from '../../services/swapi';
@@ -31,7 +31,7 @@ class App extends Component {
 					<Header>header</Header>
 					<Content>
 						<Hero />
-						<WrapperPerson />
+						<Wrapper />
 					</Content>
 					<Footer>footer</Footer>
 				</SwapiServiceProvider>
