@@ -2,49 +2,58 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Details from '../Details';
 import Record from '../Record';
-// import withData from '../../helpers/withData';
-import SwapiService from '../../services/swapi';
+import { SwapiServiceConsumer } from '../../services/swapi-context';
 
-const swapiService = new SwapiService();
+export const DetailsPerson = ({ itemID }) => (
 
-const {
-	getPerson,
-	getPersonImage,
-	getPlanet,
-	getPlanetImage,
-	getStarship,
-	getStarshipImage,
-} = swapiService;
-
-const DetailsPerson = ({ itemID }) => (
-	<Details
-		getData={getPerson}
-		getImageURL={getPersonImage}
-		itemID={itemID}
-	>
-		<Record field="gender" label="Gender" />
-		<Record field="eyeColor" label="Eye Color" />
-	</Details>
+	<SwapiServiceConsumer>
+		{
+			({ getPerson, getPersonImage }) => (
+				<Details
+					getData={getPerson}
+					getImageURL={getPersonImage}
+					itemID={itemID}
+				>
+					<Record field="gender" label="Gender" />
+					<Record field="eyeColor" label="Eye Color" />
+				</Details>
+			)
+		}
+	</SwapiServiceConsumer>
 );
-const DetailsPlanet = ({ itemID }) => (
-	<Details
-		getData={getPlanet}
-		getImageURL={getPlanetImage}
-		itemID={itemID}
-	>
-		<Record field="diameter" label="Diameter" />
-		<Record field="population" label="Population" />
-	</Details>
+
+export const DetailsPlanet = ({ itemID }) => (
+	<SwapiServiceConsumer>
+		{
+			({ getPlanet, getPlanetImage }) => (
+				<Details
+					getData={getPlanet}
+					getImageURL={getPlanetImage}
+					itemID={itemID}
+				>
+					<Record field="diameter" label="Diameter" />
+					<Record field="population" label="Population" />
+				</Details>
+			)
+		}
+	</SwapiServiceConsumer>
 );
-const DetailsStarship = ({ itemID }) => (
-	<Details
-		getData={getStarship}
-		getImageURL={getStarshipImage}
-		itemID={itemID}
-	>
-		<Record field="model" label="Model" />
-		<Record field="length" label="Length" />
-	</Details>
+
+export const DetailsStarship = ({ itemID }) => (
+	<SwapiServiceConsumer>
+		{
+			({ getStarship, getStarshipImage }) => (
+				<Details
+					getData={getStarship}
+					getImageURL={getStarshipImage}
+					itemID={itemID}
+				>
+					<Record field="model" label="Model" />
+					<Record field="length" label="Length" />
+				</Details>
+			)
+		}
+	</SwapiServiceConsumer>
 );
 
 DetailsPerson.propTypes = {
@@ -55,10 +64,4 @@ DetailsPlanet.propTypes = {
 };
 DetailsStarship.propTypes = {
 	'itemID': PropTypes.string.isRequired,
-};
-
-export {
-	DetailsPerson,
-	DetailsPlanet,
-	DetailsStarship,
 };

@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Layout } from 'antd';
 import Hero from '../Hero';
 import WrapperPerson from '../WrapperPerson';
+import ErrorBoundary from '../ErrorBoundary';
+import { SwapiServiceProvider } from '../../services/swapi-context';
+import SwapiService from '../../services/swapi';
+
 import 'antd/dist/antd.css';
 import '../../styles/style.css';
 
@@ -10,6 +14,8 @@ const {
 } = Layout;
 
 class App extends Component {
+	swapiService = new SwapiService();
+
 	constructor() {
 		super();
 		this.state = {
@@ -17,16 +23,19 @@ class App extends Component {
 		};
 	}
 
+
 	render() {
 		return (
-			<>
-				<Header>header</Header>
-				<Content>
-					<Hero />
-					<WrapperPerson />
-				</Content>
-				<Footer>footer</Footer>
-			</>
+			<ErrorBoundary>
+				<SwapiServiceProvider value={this.swapiService}>
+					<Header>header</Header>
+					<Content>
+						<Hero />
+						<WrapperPerson />
+					</Content>
+					<Footer>footer</Footer>
+				</SwapiServiceProvider>
+			</ErrorBoundary>
 		);
 	}
 }
