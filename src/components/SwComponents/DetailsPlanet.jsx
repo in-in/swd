@@ -26,4 +26,4 @@ DetailsPlanet.propTypes = {
 	'getImageURL': PropTypes.func.isRequired,
 };
 
-export default withSwapi(DetailsPlanet, mapMethodsToProps);
+export default withSwapi(mapMethodsToProps)(DetailsPlanet);

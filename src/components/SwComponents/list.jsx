@@ -7,7 +7,9 @@ import withSwapi from '../../helpers/withSwapi';
 
 const { Text } = Typography;
 
-const withChildFunction = (Wrapped, fn) => (props) => <Wrapped {...props}>{fn}</Wrapped>;
+const withChildFunction = (fn) => (
+	Wrapped,
+) => (props) => <Wrapped {...props}>{fn}</Wrapped>;
 
 const renderNameAndGender = ({ name, gender }) => (
 	<>
@@ -40,23 +42,20 @@ const mapStarshipMethodsToProps = (swapiService) => ({
 	'getData': swapiService.getAllStarships,
 });
 
-const ListPerson = withSwapi(
+const ListPerson = withSwapi(mapPersonMethodsToProps)(
 	withData(
-		withChildFunction(List, renderNameAndGender),
+		withChildFunction(renderNameAndGender)(List),
 	),
-	mapPersonMethodsToProps,
 );
-const ListPlanet = withSwapi(
+const ListPlanet = withSwapi(mapPlanetMethodsToProps)(
 	withData(
-		withChildFunction(List, renderNameAndDiameter),
+		withChildFunction(renderNameAndDiameter)(List),
 	),
-	mapPlanetMethodsToProps,
 );
-const ListStarship = withSwapi(
+const ListStarship = withSwapi(mapStarshipMethodsToProps)(
 	withData(
-		withChildFunction(List, renderNameAndModel),
+		withChildFunction(renderNameAndModel)(List),
 	),
-	mapStarshipMethodsToProps,
 );
 
 renderNameAndGender.propTypes = {

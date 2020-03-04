@@ -1,7 +1,7 @@
 import React from 'react';
 import { SwapiServiceConsumer } from '../services/swapi-context';
 
-const withSwapi = (Wrapped, mapMethodsToProps) => (props) => (
+const withSwapi = (mapMethodsToProps) => (Wrapped) => (props) => (
 	<SwapiServiceConsumer>
 		{
 			(swapiService) => {

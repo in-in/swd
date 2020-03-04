@@ -26,4 +26,4 @@ DetailsPerson.propTypes = {
 	'getImageURL': PropTypes.func.isRequired,
 };
 
-export default withSwapi(DetailsPerson, mapMethodsToProps);
+export default withSwapi(mapMethodsToProps)(DetailsPerson);
