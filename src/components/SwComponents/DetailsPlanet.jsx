@@ -4,27 +4,26 @@ import Details from '../Details';
 import Record from '../Record';
 import withSwapi from '../../helpers/withSwapi';
 
-const DetailsPlanet = ({ itemID, swapiService }) => {
-	const { getPlanet, getPlanetImage } = swapiService;
+const DetailsPlanet = ({ itemID, getData, getImageURL }) => (
+	<Details
+		getData={getData}
+		getImageURL={getImageURL}
+		itemID={itemID}
+	>
+		<Record field="diameter" label="Diameter" />
+		<Record field="population" label="Population" />
+	</Details>
+);
 
-	return (
-		<Details
-			getData={getPlanet}
-			getImageURL={getPlanetImage}
-			itemID={itemID}
-		>
-			<Record field="diameter" label="Diameter" />
-			<Record field="population" label="Population" />
-		</Details>
-	);
-};
+const mapMethodsToProps = (swapiService) => ({
+	'getData': swapiService.getPlanet,
+	'getImageURL': swapiService.getPlanetImage,
+});
 
 DetailsPlanet.propTypes = {
 	'itemID': PropTypes.string.isRequired,
-	'swapiService': PropTypes.shape({
-		'getPlanet': PropTypes.func,
-		'getPlanetImage': PropTypes.func,
-	}).isRequired,
+	'getData': PropTypes.func.isRequired,
+	'getImageURL': PropTypes.func.isRequired,
 };
 
-export default withSwapi(DetailsPlanet);
+export default withSwapi(DetailsPlanet, mapMethodsToProps);
