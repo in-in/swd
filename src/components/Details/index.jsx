@@ -7,6 +7,7 @@ import {
 	Spin,
 	Typography,
 } from 'antd';
+import ErrorBoundary from '../ErrorBoundary';
 
 const { Meta } = Card;
 const { Title } = Typography;
@@ -64,31 +65,32 @@ class Details extends Component {
 		}
 
 		return (
-			<Layout>
-				{loading
-					? <Spin size="large" />
-					: (
-						<Card
-							style={{ 'width': 300 }}
-							cover={(
-								<img
-									src={`${image}`}
-									alt={`${name}`}
+			<ErrorBoundary>
+				<Layout>
+					{loading
+						? <Spin size="large" />
+						: (
+							<Card
+								style={{ 'width': 300 }}
+								cover={(
+									<img
+										src={`${image}`}
+										alt={`${name}`}
+									/>
+								)}
+							>
+								<Meta
+									title={<Title level={4}>{name}</Title>}
 								/>
-							)}
-						>
-							<Meta
-								title={<Title level={4}>{name}</Title>}
-							/>
-							<List>
-								{
-									Children.map(children, (child) => cloneElement(child, { item }))
-								}
-							</List>
-						</Card>
-					)}
-
-			</Layout>
+								<List>
+									{
+										Children.map(children, (child) => cloneElement(child, { item }))
+									}
+								</List>
+							</Card>
+						)}
+				</Layout>
+			</ErrorBoundary>
 		);
 	}
 }
