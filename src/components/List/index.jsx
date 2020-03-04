@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, List as Ls } from 'antd';
-import withData from '../../helpers/withData';
-import SwapiService from '../../services/swapi';
 
 const { Item } = Ls;
 
@@ -38,6 +36,4 @@ List.propTypes = {
 	'onItemSelected': PropTypes.func.isRequired,
 };
 
-const { getAllPeople } = new SwapiService();
-
-export default withData(List, getAllPeople);
+export default List;
