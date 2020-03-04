@@ -7,14 +7,11 @@ import {
 	Spin,
 	Typography,
 } from 'antd';
-import SwapiService from '../../services/swapi';
 
 const { Meta } = Card;
 const { Title } = Typography;
 
 class Details extends Component {
-	swapiService = new SwapiService();
-
 	constructor() {
 		super();
 		this.state = {
