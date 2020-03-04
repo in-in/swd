@@ -1,49 +1,18 @@
-import React, { Component } from 'react';
-import Row from '../Row';
+import React from 'react';
 import ErrorBoundary from '../ErrorBoundary';
-import {
-	DetailsPerson,
-	DetailsPlanet,
-	DetailsStarship,
-	ListPerson,
-	ListPlanet,
-	ListStarship,
-} from '../SwComponents';
 
-class Wrapper extends Component {
-	constructor() {
-		super();
-		this.state = {
-			'selectedItem': '5',
-		};
-	}
+import PagePeople from '../PagePeople';
+import PagePlanets from '../PagePlanets';
+import PageStarships from '../PageStarships';
 
-	onItemSelected = (selectedItem) => {
-		this.setState({ selectedItem });
-	}
-
-	render() {
-		const { selectedItem } = this.state;
-
-		return (
-			<ErrorBoundary>
-				<>
-					<Row
-						left={<ListPerson onItemSelected={this.onItemSelected} />}
-						right={<DetailsPerson itemID={selectedItem} />}
-					/>
-					<Row
-						left={<ListPlanet onItemSelected={this.onItemSelected} />}
-						right={<DetailsPlanet itemID={selectedItem} />}
-					/>
-					<Row
-						left={<ListStarship onItemSelected={this.onItemSelected} />}
-						right={<DetailsStarship itemID={selectedItem} />}
-					/>
-				</>
-			</ErrorBoundary>
-		);
-	}
-}
+const Wrapper = () => (
+	<ErrorBoundary>
+		<>
+			<PagePeople />
+			<PagePlanets />
+			<PageStarships />
+		</>
+	</ErrorBoundary>
+);
 
 export default Wrapper;
