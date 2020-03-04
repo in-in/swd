@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Typography } from 'antd';
 import Row from '../Row';
 import ErrorBoundary from '../ErrorBoundary';
 import SwapiService from '../../services/swapi';
@@ -11,8 +10,6 @@ import {
 	ListPlanet,
 	ListStarship,
 } from '../SwComponents';
-
-const { Text } = Typography;
 
 class WrapperPerson extends Component {
 	swapiService = new SwapiService();
@@ -33,16 +30,7 @@ class WrapperPerson extends Component {
 
 		const left = (
 			<>
-				<ListPerson onItemSelected={this.onItemSelected}>
-					{
-						({ name, gender }) => (
-							<>
-								<Text strong>{name}</Text>
-								<Text code>{gender}</Text>
-							</>
-						)
-					}
-				</ListPerson>
+				<ListPerson onItemSelected={this.onItemSelected} />
 				<ListPlanet onItemSelected={this.onItemSelected} />
 				<ListStarship onItemSelected={this.onItemSelected} />
 			</>
