@@ -63,8 +63,10 @@ class Hero extends Component {
 	}
 
 	componentDidMount() {
+		const { updateInterval } = this.props;
+
 		this.updatePlanet();
-		this.interval = setInterval(this.updatePlanet, 4000);
+		this.interval = setInterval(this.updatePlanet, updateInterval);
 	}
 
 	componentWillUnmount() {
@@ -111,6 +113,14 @@ class Hero extends Component {
 		);
 	}
 }
+
+Hero.propTypes = {
+	'updateInterval': PropTypes.number,
+};
+
+Hero.defaultProps = {
+	'updateInterval': 30000,
+};
 
 HeroContent.propTypes = {
 	'planet': PropTypes.shape({
