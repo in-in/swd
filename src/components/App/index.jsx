@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Layout } from 'antd';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Hero from '../Hero';
+import Header from '../Header';
 import PagePeople from '../PagePeople';
 import PagePlanets from '../PagePlanets';
 import PageStarships from '../PageStarships';
@@ -12,9 +13,7 @@ import SwapiService from '../../services/swapi';
 import 'antd/dist/antd.css';
 import '../../styles/style.css';
 
-const {
-	Header, Content, Footer,
-} = Layout;
+const { Content, Footer } = Layout;
 
 class App extends Component {
 	swapiService = new SwapiService();
@@ -32,7 +31,7 @@ class App extends Component {
 			<ErrorBoundary>
 				<SwapiServiceProvider value={this.swapiService}>
 					<Router>
-						<Header>header</Header>
+						<Header />
 						<Content>
 							<Hero />
 							<Route path="/people" component={PagePeople} />
