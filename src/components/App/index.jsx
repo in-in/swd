@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Hero from '../Hero';
-import Wrapper from '../Wrapper';
+import PagePeople from '../PagePeople';
+import PagePlanets from '../PagePlanets';
+import PageStarships from '../PageStarships';
 import ErrorBoundary from '../ErrorBoundary';
 import { SwapiServiceProvider } from '../../services/swapi-context';
 import SwapiService from '../../services/swapi';
@@ -28,12 +31,16 @@ class App extends Component {
 		return (
 			<ErrorBoundary>
 				<SwapiServiceProvider value={this.swapiService}>
-					<Header>header</Header>
-					<Content>
-						<Hero />
-						<Wrapper />
-					</Content>
-					<Footer>footer</Footer>
+					<Router>
+						<Header>header</Header>
+						<Content>
+							<Hero />
+							<Route path="/people" component={PagePeople} />
+							<Route path="/planets" component={PagePlanets} />
+							<Route path="/starships" component={PageStarships} />
+						</Content>
+						<Footer>footer</Footer>
+					</Router>
 				</SwapiServiceProvider>
 			</ErrorBoundary>
 		);
