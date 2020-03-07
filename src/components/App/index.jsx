@@ -40,7 +40,7 @@ class App extends Component {
 								exact
 								render={() => <Title level={2}>Welcome to Star Wars Depot</Title>}
 							/>
-							<Route path="/people" component={PagePeople} />
+							<Route path="/people/:id?" component={PagePeople} />
 							<Route path="/planets" component={PagePlanets} />
 							<Route
 								path="/starships"

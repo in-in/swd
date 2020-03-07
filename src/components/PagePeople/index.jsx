@@ -1,29 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import Row from '../Row';
 import { DetailsPerson, ListPerson } from '../SwComponents';
 
-class PagePeople extends Component {
-	constructor() {
-		super();
-		this.state = {
-			'selectedItem': '5',
-		};
-	}
+const PagePeople = ({ history, 'match': { 'params': { id = '1' } } }) => (
+	<Row
+		left={<ListPerson onItemSelected={(itemID) => history.push(itemID)} />}
+		right={<DetailsPerson itemID={id} />}
+	/>
+);
 
-	onItemSelected = (selectedItem) => {
-		this.setState({ selectedItem });
-	}
+PagePeople.propTypes = {
+	'history': PropTypes.shape({
+		'push': PropTypes.func,
+	}).isRequired,
+	// eslint-disable-next-line react/require-default-props
+	'match': PropTypes.shape({
+		'params': PropTypes.shape({
+			'id': PropTypes.string,
+		}),
+	}),
+};
 
-	render() {
-		const { selectedItem } = this.state;
-
-		return (
-			<Row
-				left={<ListPerson onItemSelected={this.onItemSelected} />}
-				right={<DetailsPerson itemID={selectedItem} />}
-			/>
-		);
-	}
-}
-
-export default PagePeople;
+export default withRouter(PagePeople);
