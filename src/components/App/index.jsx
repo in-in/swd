@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Layout, Typography } from 'antd';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {
+	BrowserRouter as Router, Route, Switch,
+} from 'react-router-dom';
 import Hero from '../Hero';
 import Header from '../Header';
 import PagePeople from '../PagePeople';
@@ -8,6 +10,7 @@ import PagePlanets from '../PagePlanets';
 import PageStarships from '../PageStarships';
 import PageLogin from '../PageLogin';
 import PageSecret from '../PageSecret';
+import Page404 from '../Page404';
 import ErrorBoundary from '../ErrorBoundary';
 import { SwapiServiceProvider } from '../../services/swapi-context';
 import SwapiService from '../../services/swapi';
@@ -49,32 +52,35 @@ class App extends Component {
 								exact
 								render={() => <Title level={2}>Welcome to Star Wars Depot</Title>}
 							/>
-							<Route path="/people/:id?" component={PagePeople} />
-							<Route path="/planets" component={PagePlanets} />
-							<Route
-								path="/starships"
-								exact
-								component={PageStarships}
-							/>
-							<Route
-								path="/starships/:id"
-								render={(
-									{ 'match': { 'params': { id } } },
-								) => <DetailsStarship itemID={id} />}
-							/>
-							<Route
-								path="/login"
-								render={() => (
-									<PageLogin
-										onLogin={this.onLogin}
-										isLoggedIn={isLoggedIn}
-									/>
-								)}
-							/>
-							<Route
-								path="/secret"
-								render={() => <PageSecret isLoggedIn={isLoggedIn} />}
-							/>
+							<Switch>
+								<Route path="/people/:id?" component={PagePeople} />
+								<Route path="/planets" component={PagePlanets} />
+								<Route
+									path="/starships"
+									exact
+									component={PageStarships}
+								/>
+								<Route
+									path="/starships/:id"
+									render={(
+										{ 'match': { 'params': { id } } },
+									) => <DetailsStarship itemID={id} />}
+								/>
+								<Route
+									path="/login"
+									render={() => (
+										<PageLogin
+											onLogin={this.onLogin}
+											isLoggedIn={isLoggedIn}
+										/>
+									)}
+								/>
+								<Route
+									path="/secret"
+									render={() => <PageSecret isLoggedIn={isLoggedIn} />}
+								/>
+								<Route component={Page404} />
+							</Switch>
 						</Content>
 						<Footer>footer</Footer>
 					</Router>
