@@ -6,6 +6,8 @@ import Header from '../Header';
 import PagePeople from '../PagePeople';
 import PagePlanets from '../PagePlanets';
 import PageStarships from '../PageStarships';
+import PageLogin from '../PageLogin';
+import PageSecret from '../PageSecret';
 import ErrorBoundary from '../ErrorBoundary';
 import { SwapiServiceProvider } from '../../services/swapi-context';
 import SwapiService from '../../services/swapi';
@@ -22,12 +24,19 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			// 'selectedPerson': '1',
+			'isLoggedIn': false,
 		};
 	}
 
+	onLogin = () => {
+		this.setState(
+			(state) => ({ 'isLoggedIn': !state.isLoggedIn }),
+		);
+	}
 
 	render() {
+		const { isLoggedIn } = this.state;
+
 		return (
 			<ErrorBoundary>
 				<SwapiServiceProvider value={this.swapiService}>
@@ -52,6 +61,19 @@ class App extends Component {
 								render={(
 									{ 'match': { 'params': { id } } },
 								) => <DetailsStarship itemID={id} />}
+							/>
+							<Route
+								path="/login"
+								render={() => (
+									<PageLogin
+										onLogin={this.onLogin}
+										isLoggedIn={isLoggedIn}
+									/>
+								)}
+							/>
+							<Route
+								path="/secret"
+								render={() => <PageSecret isLoggedIn={isLoggedIn} />}
 							/>
 						</Content>
 						<Footer>footer</Footer>
