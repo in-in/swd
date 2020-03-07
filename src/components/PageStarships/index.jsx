@@ -4,10 +4,7 @@ import PropTypes from 'prop-types';
 import { ListStarship } from '../SwComponents';
 
 const PageStarships = ({ history }) => (
-	<ListStarship onItemSelected={(itemID) => {
-		history.push(`/starships/${itemID}`);
-	}}
-	/>
+	<ListStarship onItemSelected={(itemID) => history.push(itemID)} />
 );
 
 PageStarships.propTypes = {

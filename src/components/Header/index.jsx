@@ -14,13 +14,13 @@ class Header extends Component {
 					<Link to="/">SWD</Link>
 					<Menu mode="horizontal">
 						<Item key="people">
-							<Link to="/people">People</Link>
+							<Link to="/people/">People</Link>
 						</Item>
 						<Item key="planets">
-							<Link to="/planets">Planets</Link>
+							<Link to="/planets/">Planets</Link>
 						</Item>
 						<Item key="starships">
-							<Link to="/starships">Starships</Link>
+							<Link to="/starships/">Starships</Link>
 						</Item>
 					</Menu>
 				</Row>
