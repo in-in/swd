@@ -11,6 +11,7 @@ import { SwapiServiceProvider } from '../../services/swapi-context';
 import SwapiService from '../../services/swapi';
 import 'antd/dist/antd.css';
 import '../../styles/style.css';
+import { DetailsStarship } from '../SwComponents';
 
 const { Content, Footer } = Layout;
 const { Title } = Typography;
@@ -41,7 +42,17 @@ class App extends Component {
 							/>
 							<Route path="/people" component={PagePeople} />
 							<Route path="/planets" component={PagePlanets} />
-							<Route path="/starships" component={PageStarships} />
+							<Route
+								path="/starships"
+								exact
+								component={PageStarships}
+							/>
+							<Route
+								path="/starships/:id"
+								render={(
+									{ 'match': { 'params': { id } } },
+								) => <DetailsStarship itemID={id} />}
+							/>
 						</Content>
 						<Footer>footer</Footer>
 					</Router>
