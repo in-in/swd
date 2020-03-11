@@ -9,12 +9,19 @@ const { 'Header': AntHeader } = Layout;
 
 const Header = () => (
 	<AntHeader>
-		<Row justify="space-between" align="bottom">
-			<Col xs={24} sm={24} md={6} lg={6} xl={5} xxl={4}>
+		<Row justify="space-between" align="middle">
+			<Col xs={24} sm={24} md={3}>
 				<Link to="/">SWD</Link>
 			</Col>
-			<Col xs={0} sm={0} md={18} lg={18} xl={19} xxl={20}>
-				<Menu mode="horizontal">
+			<Col xs={0} sm={0} md={16}>
+				<Menu
+					mode="horizontal"
+					theme="dark"
+					style={{
+						'display': 'flex',
+						'justifyContent': 'flex-end',
+					}}
+				>
 					<Item key="people">
 						<Link to="/people/">People</Link>
 					</Item>
