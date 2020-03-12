@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Layout, Row } from 'antd';
+import { Logo } from '../Logo';
 import { DropdownMenu } from '../DropdownMenu';
 
 const { 'Header': AntHeader } = Layout;
 
 const Header = () => (
 	<AntHeader>
-		<Row justify="space-between" align="middle">
-			<Link to="/">SWD</Link>
+		<Row justify="space-between" align="middle" style={{ 'height': '100%' }}>
+			<Logo />
 			<DropdownMenu />
 		</Row>
 	</AntHeader>
