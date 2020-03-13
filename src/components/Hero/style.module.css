@@ -1,0 +1,12 @@
+@media (min-width: 576px) {
+	.hero_content {
+		display: flex;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.hero_content img {
+		max-width: 100%;
+		height: auto;
+	}
+}

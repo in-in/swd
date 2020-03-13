@@ -9,6 +9,7 @@ import {
 } from 'antd';
 import SwapiService from '../../services/swapi';
 import ErrorIndicator from '../ErrorIndicator';
+import s from './style.module.css';
 
 const { Meta } = Card;
 const { Title } = Typography;
@@ -21,7 +22,8 @@ const HeroContent = ({ planet }) => {
 
 	return (
 		<Card
-			style={{ 'width': 300 }}
+			className={s.hero_content}
+			bordered={false}
 			cover={(
 				<img
 					src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
@@ -34,15 +36,15 @@ const HeroContent = ({ planet }) => {
 			/>
 			<List>
 				<Item>
-					<span>Diameter: </span>
+					<span>Diameter:&nbsp;</span>
 					<span>{diameter}</span>
 				</Item>
 				<Item>
-					<span>Population: </span>
+					<span>Population:&nbsp;</span>
 					<span>{population}</span>
 				</Item>
 				<Item>
-					<span>Rotation Period: </span>
+					<span>Rotation Period:&nbsp;</span>
 					<span>{rotationPeriod}</span>
 				</Item>
 			</List>
