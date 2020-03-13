@@ -16,7 +16,7 @@ export const Logo = () => (
 			style={{ 'width': '2em' }}
 		/>
 		<span style={{
-			'line-height': '1.5',
+			'lineHeight': '1.5',
 			'fontWeight': 700,
 		}}
 		>SWD
