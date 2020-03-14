@@ -6,7 +6,7 @@ import { DropdownMenu } from '../DropdownMenu';
 const { 'Header': AntHeader } = Layout;
 
 const Header = () => (
-	<AntHeader>
+	<AntHeader className="container">
 		<Row justify="space-between" align="middle" style={{ 'height': '100%' }}>
 			<Logo />
 			<DropdownMenu />

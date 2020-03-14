@@ -45,7 +45,7 @@ class App extends Component {
 				<SwapiServiceProvider value={this.swapiService}>
 					<Router>
 						<Header />
-						<Content>
+						<Content className="container">
 							<Hero />
 							<Route
 								path="/"
@@ -82,7 +82,7 @@ class App extends Component {
 								<Route component={Page404} />
 							</Switch>
 						</Content>
-						<Footer>footer</Footer>
+						<Footer className="container">footer</Footer>
 					</Router>
 				</SwapiServiceProvider>
 			</ErrorBoundary>

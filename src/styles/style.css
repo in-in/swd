@@ -16,3 +16,8 @@
 		0 0 0 0.125rem dodgerblue,
 		0 0 0 0.375rem orangered !important;
 }
+
+.container {
+	padding-left: 5vw;
+	padding-right: 5vw;
+}
