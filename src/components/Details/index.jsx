@@ -2,7 +2,6 @@ import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import {
 	Card,
-	Layout,
 	List,
 	Spin,
 	Typography,
@@ -66,30 +65,28 @@ class Details extends Component {
 
 		return (
 			<ErrorBoundary>
-				<Layout>
-					{loading
-						? <Spin size="large" />
-						: (
-							<Card
-								style={{ 'width': 300 }}
-								cover={(
-									<img
-										src={`${image}`}
-										alt={`${name}`}
-									/>
-								)}
-							>
-								<Meta
-									title={<Title level={4}>{name}</Title>}
+				{loading
+					? <Spin size="large" />
+					: (
+						<Card
+							bordered={false}
+							cover={(
+								<img
+									src={`${image}`}
+									alt={`${name}`}
 								/>
-								<List>
-									{
-										Children.map(children, (child) => cloneElement(child, { item }))
-									}
-								</List>
-							</Card>
-						)}
-				</Layout>
+							)}
+						>
+							<Meta
+								title={<Title level={4}>{name}</Title>}
+							/>
+							<List>
+								{
+									Children.map(children, (child) => cloneElement(child, { item }))
+								}
+							</List>
+						</Card>
+					)}
 			</ErrorBoundary>
 		);
 	}

@@ -24,7 +24,7 @@ const List = (props) => {
 	});
 
 	return (
-		<Ls bordered>
+		<Ls>
 			{items}
 		</Ls>
 	);
