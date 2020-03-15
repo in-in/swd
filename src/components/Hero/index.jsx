@@ -107,7 +107,7 @@ class Hero extends Component {
 		const content = hasData ? <HeroContent planet={planet} /> : null;
 
 		return (
-			<Layout>
+			<Layout style={{ 'marginBottom': '2vw' }}>
 				{errorMessage}
 				{spinner}
 				{content}

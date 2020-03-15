@@ -45,7 +45,7 @@ class App extends Component {
 				<SwapiServiceProvider value={this.swapiService}>
 					<Router>
 						<Header />
-						<Content className="container">
+						<Content className="container" style={{ 'marginBottom': '2vw' }}>
 							<Hero />
 							<Switch>
 								<Route
