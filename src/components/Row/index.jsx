@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Row as AntRow, Col } from 'antd';
 
 const Row = ({ left, right }) => (
-	<AntRow>
-		<Col span={12}>{left}</Col>
-		<Col span={12}>{right}</Col>
+	<AntRow gutter={16}>
+		<Col xs={24} md={12}>{left}</Col>
+		<Col xs={24} md={12}>{right}</Col>
 	</AntRow>
 );
 
