@@ -16,7 +16,6 @@ import { SwapiServiceProvider } from '../../services/swapi-context';
 import SwapiService from '../../services/swapi';
 import 'antd/dist/antd.css';
 import '../../styles/style.css';
-import { DetailsStarship } from '../SwComponents';
 
 const { Content, Footer } = Layout;
 const { Title } = Typography;
@@ -54,17 +53,10 @@ class App extends Component {
 									render={() => <Title level={2}>Welcome to Star Wars Depot</Title>}
 								/>
 								<Route path="/people/:id?" component={PagePeople} />
-								<Route path="/planets" component={PagePlanets} />
+								<Route path="/planets/:id?" component={PagePlanets} />
 								<Route
-									path="/starships"
-									exact
+									path="/starships/:id?"
 									component={PageStarships}
-								/>
-								<Route
-									path="/starships/:id"
-									render={(
-										{ 'match': { 'params': { id } } },
-									) => <DetailsStarship itemID={id} />}
 								/>
 								<Route
 									path="/login"
