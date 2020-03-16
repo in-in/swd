@@ -1,29 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import Row from '../Row';
 import { DetailsPlanet, ListPlanet } from '../SwComponents';
 
-class PagePlanets extends Component {
-	constructor() {
-		super();
-		this.state = {
-			'selectedItem': '5',
-		};
-	}
+const PagePlanets = ({ history, 'match': { 'params': { id = '2' } } }) => (
+	<Row
+		left={<ListPlanet onItemSelected={(itemID) => history.push(itemID)} />}
+		right={<DetailsPlanet itemID={id} />}
+	/>
+);
 
-	onItemSelected = (selectedItem) => {
-		this.setState({ selectedItem });
-	}
+PagePlanets.propTypes = {
+	'history': PropTypes.shape({
+		'push': PropTypes.func,
+	}).isRequired,
+	// eslint-disable-next-line react/require-default-props
+	'match': PropTypes.shape({
+		'params': PropTypes.shape({
+			'id': PropTypes.string,
+		}),
+	}),
+};
 
-	render() {
-		const { selectedItem } = this.state;
-
-		return (
-			<Row
-				left={<ListPlanet onItemSelected={this.onItemSelected} />}
-				right={<DetailsPlanet itemID={selectedItem} />}
-			/>
-		);
-	}
-}
-
-export default PagePlanets;
+export default withRouter(PagePlanets);
