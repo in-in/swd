@@ -15,10 +15,10 @@ const renderNameAndGender = ({ name, gender }) => (
 		<Text code>{gender}</Text>
 	</>
 );
-const renderNameAndModel = ({ name, model }) => (
+const renderNameAndCrew = ({ name, crew }) => (
 	<>
 		<Text strong>{name}</Text>
-		<Text code>{model}</Text>
+		<Text code>{crew}</Text>
 	</>
 );
 const renderNameAndDiameter = ({ name, diameter }) => (
@@ -55,7 +55,7 @@ const ListPlanet = compose(
 const ListStarship = compose(
 	withSwapi(mapStarshipMethodsToProps),
 	withData,
-	withChildFunction(renderNameAndModel),
+	withChildFunction(renderNameAndCrew),
 )(List);
 
 renderNameAndGender.propTypes = {
@@ -63,8 +63,8 @@ renderNameAndGender.propTypes = {
 	'name': PropTypes.string.isRequired,
 };
 
-renderNameAndModel.propTypes = {
-	'model': PropTypes.string.isRequired,
+renderNameAndCrew.propTypes = {
+	'crew': PropTypes.string.isRequired,
 	'name': PropTypes.string.isRequired,
 };
 
