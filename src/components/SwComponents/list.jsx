@@ -12,19 +12,28 @@ const { Text } = Typography;
 const renderNameAndGender = ({ name, gender }) => (
 	<>
 		<Text strong>{name}</Text>
-		<Text code>{gender}</Text>
+		<div>
+			<Text type="secondary">gender: </Text>
+			<Text code>{gender}</Text>
+		</div>
 	</>
 );
 const renderNameAndCrew = ({ name, crew }) => (
 	<>
 		<Text strong>{name}</Text>
-		<Text code>{crew}</Text>
+		<div>
+			<Text type="secondary">crew: </Text>
+			<Text code>{crew}</Text>
+		</div>
 	</>
 );
 const renderNameAndDiameter = ({ name, diameter }) => (
 	<>
 		<Text strong>{name}</Text>
-		<Text code>{diameter}</Text>
+		<div>
+			<Text type="secondary">diameter: </Text>
+			<Text code>{diameter}</Text>
+		</div>
 	</>
 );
 
