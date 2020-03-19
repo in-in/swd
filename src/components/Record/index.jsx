@@ -4,7 +4,7 @@ import { List } from 'antd';
 
 const { Item } = List;
 
-const Record = ({ item, field, label }) => (
+export const Record = ({ item, field, label }) => (
 	<Item>
 		<span>{label}</span>
 		<span>{item[field]}</span>
@@ -20,5 +20,3 @@ Record.propTypes = {
 Record.defaultProps = {
 	'item': {},
 };
-
-export default Record;

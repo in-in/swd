@@ -1,4 +1,4 @@
-export default class SwapiService {
+export class SwapiService {
 	apiBase = 'https://swapi.co/api/'
 
 	imageBase = 'https://starwars-visualguide.com/assets/img/'

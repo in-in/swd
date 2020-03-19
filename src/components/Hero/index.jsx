@@ -7,8 +7,8 @@ import {
 	Spin,
 	Typography,
 } from 'antd';
-import SwapiService from '../../services/swapi';
-import ErrorIndicator from '../ErrorIndicator';
+import { SwapiService } from '../../services/swapi';
+import { ErrorIndicator } from '../ErrorIndicator';
 import s from './style.module.css';
 
 const { Meta } = Card;
@@ -52,7 +52,7 @@ const HeroContent = ({ planet }) => {
 	);
 };
 
-class Hero extends Component {
+export class Hero extends Component {
 	swapiService = new SwapiService();
 
 	constructor() {
@@ -133,5 +133,3 @@ HeroContent.propTypes = {
 		'rotationPeriod': PropTypes.string,
 	}).isRequired,
 };
-
-export default Hero;

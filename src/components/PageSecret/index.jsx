@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
-const PageSecret = ({ isLoggedIn }) => {
+export const PageSecret = ({ isLoggedIn }) => {
 	if (isLoggedIn) {
 		return (
 			<div>This page is secret</div>
@@ -15,5 +15,3 @@ const PageSecret = ({ isLoggedIn }) => {
 PageSecret.propTypes = {
 	'isLoggedIn': PropTypes.bool.isRequired,
 };
-
-export default PageSecret;

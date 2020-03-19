@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from 'antd';
-import List from '../List';
-import withData from '../../helpers/withData';
-import withSwapi from '../../helpers/withSwapi';
-import withChildFunction from '../../helpers/withChildFunction';
-import compose from '../../helpers/compose';
+import { List } from '../List';
+import { withData } from '../../helpers/withData';
+import { withSwapi } from '../../helpers/withSwapi';
+import { withChildFunction } from '../../helpers/withChildFunction';
+import { compose } from '../../helpers/compose';
 
 const { Text } = Typography;
 

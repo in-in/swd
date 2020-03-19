@@ -4,7 +4,7 @@ import { List as Ls } from 'antd';
 
 const { Item } = Ls;
 
-const List = (props) => {
+export const List = (props) => {
 	const { children, data, onItemSelected } = props;
 
 	const items = data.map((item) => {
@@ -34,5 +34,3 @@ List.propTypes = {
 	'data': PropTypes.arrayOf(PropTypes.object).isRequired,
 	'onItemSelected': PropTypes.func.isRequired,
 };
-
-export default List;

@@ -6,12 +6,12 @@ import {
 	Spin,
 	Typography,
 } from 'antd';
-import ErrorBoundary from '../ErrorBoundary';
+import { ErrorBoundary } from '../ErrorBoundary';
 
 const { Meta } = Card;
 const { Title } = Typography;
 
-class Details extends Component {
+export class Details extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -98,5 +98,3 @@ Details.propTypes = {
 	'getImageURL': PropTypes.func.isRequired,
 	'itemID': PropTypes.string.isRequired,
 };
-
-export default Details;

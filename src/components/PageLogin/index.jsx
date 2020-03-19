@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
-const PageLogin = ({ isLoggedIn, onLogin }) => {
+export const PageLogin = ({ isLoggedIn, onLogin }) => {
 	if (isLoggedIn) {
 		return <Redirect to="/" />;
 	}
@@ -23,5 +23,3 @@ PageLogin.propTypes = {
 	'isLoggedIn': PropTypes.bool.isRequired,
 	'onLogin': PropTypes.func.isRequired,
 };
-
-export default PageLogin;

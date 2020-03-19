@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import Row from '../Row';
+import { Row } from '../Row';
 import { DetailsPlanet, ListPlanet } from '../SwComponents';
 
-const PagePlanets = ({ history, 'match': { 'params': { id = '2' } } }) => (
-	<Row
-		left={<ListPlanet onItemSelected={(itemID) => history.push(itemID)} />}
-		right={<DetailsPlanet itemID={id} />}
-	/>
+export const PagePlanets = withRouter(
+	({ history, 'match': { 'params': { id = '2' } } }) => (
+		<Row
+			left={<ListPlanet onItemSelected={(itemID) => history.push(itemID)} />}
+			right={<DetailsPlanet itemID={id} />}
+		/>
+	),
 );
 
 PagePlanets.propTypes = {
@@ -22,5 +24,3 @@ PagePlanets.propTypes = {
 		}),
 	}),
 };
-
-export default withRouter(PagePlanets);

@@ -1,14 +1,16 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Row from '../Row';
+import { withRouter } from 'react-router-dom';
+import { Row } from '../Row';
 import { DetailsStarship, ListStarship } from '../SwComponents';
 
-const PageStarships = ({ history, 'match': { 'params': { id = '15' } } }) => (
-	<Row
-		left={<ListStarship onItemSelected={(itemID) => history.push(itemID)} />}
-		right={<DetailsStarship itemID={id} />}
-	/>
+export const PageStarships = withRouter(
+	({ history, 'match': { 'params': { id = '15' } } }) => (
+		<Row
+			left={<ListStarship onItemSelected={(itemID) => history.push(itemID)} />}
+			right={<DetailsStarship itemID={id} />}
+		/>
+	),
 );
 
 PageStarships.propTypes = {
@@ -22,5 +24,3 @@ PageStarships.propTypes = {
 		}),
 	}),
 };
-
-export default withRouter(PageStarships);

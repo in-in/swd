@@ -5,7 +5,7 @@ import { DropdownMenu } from '../DropdownMenu';
 
 const { 'Header': AntHeader } = Layout;
 
-const Header = () => (
+export const Header = () => (
 	<AntHeader
 		className="container"
 		style={{ 'marginBottom': '2vw' }}
@@ -20,5 +20,3 @@ const Header = () => (
 		</Row>
 	</AntHeader>
 );
-
-export default Header;

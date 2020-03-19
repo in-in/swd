@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Spin } from 'antd';
-import ErrorIndicator from '../components/ErrorIndicator';
+import { ErrorIndicator } from '../components/ErrorIndicator';
 
-const withData = (View) => class extends Component {
+export const withData = (View) => class extends Component {
 		// eslint-disable-next-line react/static-property-placement
 		static propTypes = {
 			'getData': PropTypes.func.isRequired,
@@ -55,5 +55,3 @@ const withData = (View) => class extends Component {
 			return <View {...this.props} data={data} />;
 		}
 };
-
-export default withData;

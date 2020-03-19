@@ -3,24 +3,24 @@ import { Layout, Typography } from 'antd';
 import {
 	BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
-import Hero from '../Hero';
-import Header from '../Header';
-import PagePeople from '../PagePeople';
-import PagePlanets from '../PagePlanets';
-import PageStarships from '../PageStarships';
-import PageLogin from '../PageLogin';
-import PageSecret from '../PageSecret';
-import Page404 from '../Page404';
-import ErrorBoundary from '../ErrorBoundary';
+import { Hero } from '../Hero';
+import { Header } from '../Header';
+import { PagePeople } from '../PagePeople';
+import { PagePlanets } from '../PagePlanets';
+import { PageStarships } from '../PageStarships';
+import { PageLogin } from '../PageLogin';
+import { PageSecret } from '../PageSecret';
+import { Page404 } from '../Page404';
+import { ErrorBoundary } from '../ErrorBoundary';
 import { SwapiServiceProvider } from '../../services/swapi-context';
-import SwapiService from '../../services/swapi';
+import { SwapiService } from '../../services/swapi';
 import 'antd/dist/antd.css';
 import '../../styles/style.css';
 
 const { Content, Footer } = Layout;
 const { Title } = Typography;
 
-class App extends Component {
+export class App extends Component {
 	swapiService = new SwapiService();
 
 	constructor() {
@@ -81,5 +81,3 @@ class App extends Component {
 		);
 	}
 }
-
-export default App;

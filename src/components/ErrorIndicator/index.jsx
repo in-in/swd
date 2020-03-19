@@ -5,7 +5,7 @@ import { AlertOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
-const ErrorIndicator = () => (
+export const ErrorIndicator = () => (
 	<>
 		<AlertOutlined type="alert" theme="twoTone" style={{ 'fontSize': '3em' }} />
 		<Title level={4}>Boom!</Title>
@@ -13,5 +13,3 @@ const ErrorIndicator = () => (
 		<span>(but we already sent droids to fix it)</span>
 	</>
 );
-
-export default ErrorIndicator;
