@@ -41,12 +41,16 @@ export class Wrapper extends Component {
 				<Router>
 					<Header />
 					<Content className="container" style={{ 'marginBottom': '2vw' }}>
-						<Hero />
 						<Switch>
 							<Route
 								path="/"
 								exact
-								render={() => <Title level={2}>Welcome to Star Wars Depot</Title>}
+								render={() => (
+									<>
+										<Hero />
+										<Title level={2}>Welcome to Star Wars Depot</Title>
+									</>
+								)}
 							/>
 							<Route path="/people/:id?" component={PagePeople} />
 							<Route path="/planets/:id?" component={PagePlanets} />
