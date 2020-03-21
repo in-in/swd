@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 export class SwapiService {
 	apiBase = 'https://swapi.co/api/'
 
@@ -8,39 +9,51 @@ export class SwapiService {
 		return url.match(regexp)[1];
 	}
 
-	static transformPlanet(planet) {
-		return {
-			'diameter': planet.diameter,
-			'id': SwapiService.extractID(planet.url),
-			'name': planet.name,
-			'population': planet.population,
-			'rotationPeriod': planet.rotation_period,
-		};
-	}
+	static transformPlanet = ({
+		diameter, url, name, population, rotation_period,
+	}) => ({
+		'diameter': diameter,
+		'id': SwapiService.extractID(url),
+		'name': name,
+		'population': population,
+		'rotationPeriod': rotation_period,
+	})
 
-	static transformStarship(starship) {
-		return {
-			'cargoCapacity': starship.cargo_capacity,
-			'costInCredits': starship.cost_in_credits,
-			'crew': starship.crew,
-			'id': SwapiService.extractID(starship.url),
-			'length': starship.length,
-			'manufacturer': starship.manufacturer,
-			'model': starship.model,
-			'name': starship.name,
-			'passengers': starship.passengers,
-		};
-	}
+	static transformStarship = ({
+		cargo_capacity,
+		cost_in_credits,
+		crew,
+		url,
+		length,
+		manufacturer,
+		model,
+		name,
+		passengers,
+	}) => ({
+		'cargoCapacity': cargo_capacity,
+		'costInCredits': cost_in_credits,
+		'crew': crew,
+		'id': SwapiService.extractID(url),
+		'length': length,
+		'manufacturer': manufacturer,
+		'model': model,
+		'name': name,
+		'passengers': passengers,
+	})
 
-	static transformPerson(person) {
-		return {
-			'birthYear': person.birth_year,
-			'eyeColor': person.eye_color,
-			'gender': person.gender,
-			'id': SwapiService.extractID(person.url),
-			'name': person.name,
-		};
-	}
+	static transformPerson = ({
+		birth_year,
+		eye_color,
+		gender,
+		url,
+		name,
+	}) => ({
+		'birthYear': birth_year,
+		'eyeColor': eye_color,
+		'gender': gender,
+		'id': SwapiService.extractID(url),
+		'name': name,
+	})
 
 	getResource = async (url) => {
 		const res = await fetch(`${this.apiBase}${url}`);
