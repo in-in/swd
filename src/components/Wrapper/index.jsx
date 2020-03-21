@@ -15,7 +15,7 @@ import { SwapiServiceProvider } from '../../services/swapi-context';
 import { SwapiService } from '../../services/swapi';
 
 const { Content, Footer } = Layout;
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 export class Wrapper extends Component {
 	swapiService = new SwapiService();
@@ -70,7 +70,9 @@ export class Wrapper extends Component {
 							<Route component={Page404} />
 						</Switch>
 					</Content>
-					<Footer className="container">footer</Footer>
+					<Footer className="container">
+						<Text type="secondary">built with the Force</Text>
+					</Footer>
 				</Router>
 			</SwapiServiceProvider>
 		);
