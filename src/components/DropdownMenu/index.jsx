@@ -17,11 +17,8 @@ const menu = (
 		<Item key="starships">
 			<Link to="/starships/">Starships</Link>
 		</Item>
-		<Item key="login">
-			<Link to="/login">Login</Link>
-		</Item>
-		<Item key="secret">
-			<Link to="/secret">Secret</Link>
+		<Item key="profile">
+			<Link to="/profile">Profile</Link>
 		</Item>
 	</Menu>
 );

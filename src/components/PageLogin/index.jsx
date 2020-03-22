@@ -4,11 +4,11 @@ import { Redirect } from 'react-router-dom';
 
 export const PageLogin = ({ isLoggedIn, onLogin }) => {
 	if (isLoggedIn) {
-		return <Redirect to="/" />;
+		return <Redirect to="/profile" />;
 	}
 	return (
 		<div>
-			<p>Login to see secret page</p>
+			<p>Please login to enter your profile.</p>
 			<button
 				type="button"
 				onClick={onLogin}

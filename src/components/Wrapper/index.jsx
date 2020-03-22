@@ -9,7 +9,7 @@ import { PagePeople } from '../PagePeople';
 import { PagePlanets } from '../PagePlanets';
 import { PageStarships } from '../PageStarships';
 import { PageLogin } from '../PageLogin';
-import { PageSecret } from '../PageSecret';
+import { PageProfile } from '../PageProfile';
 import { Page404 } from '../Page404';
 import { SwapiServiceProvider } from '../../services/swapi-context';
 import { SwapiService } from '../../services/swapi';
@@ -68,8 +68,8 @@ export class Wrapper extends Component {
 								)}
 							/>
 							<Route
-								path="/secret"
-								render={() => <PageSecret isLoggedIn={isLoggedIn} />}
+								path="/profile"
+								render={() => <PageProfile isLoggedIn={isLoggedIn} />}
 							/>
 							<Route component={Page404} />
 						</Switch>
