@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List as Ls } from 'antd';
+import { ErrorBoundary } from '../ErrorBoundary';
 
 const { Item } = Ls;
 
@@ -23,9 +24,11 @@ export const List = (props) => {
 	});
 
 	return (
-		<Ls>
-			{items}
-		</Ls>
+		<ErrorBoundary>
+			<Ls>
+				{items}
+			</Ls>
+		</ErrorBoundary>
 	);
 };
 
