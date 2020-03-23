@@ -8,7 +8,7 @@ const { Title } = Typography;
 export const ErrorIndicator = () => (
 	<>
 		<AlertOutlined type="alert" theme="twoTone" style={{ 'fontSize': '3em' }} />
-		<Title level={4}>Boom!</Title>
+		<Title level={4}>Achtung!</Title>
 		<span>something went wrong</span>
 		<span>(but we already sent droids to fix it)</span>
 	</>
