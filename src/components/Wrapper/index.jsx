@@ -47,8 +47,8 @@ export class Wrapper extends Component {
 								exact
 								render={() => (
 									<>
+										<Title level={1}>Welcome to Star Wars Depot</Title>
 										<Hero />
-										<Title level={2}>Welcome to Star Wars Depot</Title>
 									</>
 								)}
 							/>

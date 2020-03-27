@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { Typography } from 'antd';
 import { Row } from '../Row';
 import { DetailsPerson, ListPerson } from '../SwComponents';
 
+const { Title } = Typography;
+
 export const PagePeople = withRouter(
 	({ history, 'match': { 'params': { id = '1' } } }) => (
-		<Row
-			left={<ListPerson onItemSelected={(itemID) => history.push(itemID)} />}
-			right={<DetailsPerson itemID={id} />}
-		/>
+		<>
+			<Title level={1}>People in Star Wars Depot</Title>
+			<Row
+				left={<ListPerson onItemSelected={(itemID) => history.push(itemID)} />}
+				right={<DetailsPerson itemID={id} />}
+			/>
+		</>
 	),
 );
 
