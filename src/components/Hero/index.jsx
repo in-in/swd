@@ -20,6 +20,21 @@ const HeroContent = ({ planet }) => {
 		diameter, id, name, population, rotationPeriod,
 	} = planet;
 
+	const data = [
+		{
+			'name': 'Diameter:',
+			'value': diameter,
+		},
+		{
+			'name': 'Population:',
+			'value': population,
+		},
+		{
+			'name': 'Rotation Period:',
+			'value': rotationPeriod,
+		},
+	];
+
 	return (
 		<Card
 			className={s.hero_content}
@@ -34,20 +49,15 @@ const HeroContent = ({ planet }) => {
 			<Meta
 				title={<Title level={4}>{name}</Title>}
 			/>
-			<List>
-				<Item>
-					<span>Diameter:&nbsp;</span>
-					<span>{diameter}</span>
-				</Item>
-				<Item>
-					<span>Population:&nbsp;</span>
-					<span>{population}</span>
-				</Item>
-				<Item>
-					<span>Rotation Period:&nbsp;</span>
-					<span>{rotationPeriod}</span>
-				</Item>
-			</List>
+			<List
+				dataSource={data}
+				renderItem={(item) => (
+					<Item>
+						<span>{item.name}&nbsp;</span>
+						<span>{item.value}</span>
+					</Item>
+				)}
+			/>
 		</Card>
 	);
 };
