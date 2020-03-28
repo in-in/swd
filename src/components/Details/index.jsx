@@ -1,4 +1,4 @@
-import React, { Component, Children, cloneElement } from 'react';
+import React, { Component, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import {
 	Card,
@@ -80,11 +80,10 @@ export class Details extends Component {
 							<Meta
 								title={<Title level={4}>{name}</Title>}
 							/>
-							<List>
-								{
-									Children.map(children, (child) => cloneElement(child, { item }))
-								}
-							</List>
+							<List
+								dataSource={children}
+								renderItem={(child) => cloneElement(child, { item })}
+							/>
 						</Card>
 					)}
 			</ErrorBoundary>
