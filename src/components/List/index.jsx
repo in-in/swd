@@ -8,7 +8,7 @@ const { Item } = Ls;
 export const List = (props) => {
 	const { children, data, onItemSelected } = props;
 
-	const items = data.map((item) => {
+	const createItem = (item) => {
 		const { id } = item;
 		const label = children(item);
 
@@ -21,13 +21,14 @@ export const List = (props) => {
 				{label}
 			</Item>
 		);
-	});
+	};
 
 	return (
 		<ErrorBoundary>
-			<Ls>
-				{items}
-			</Ls>
+			<Ls
+				dataSource={data}
+				renderItem={(item) => createItem(item)}
+			/>
 		</ErrorBoundary>
 	);
 };
