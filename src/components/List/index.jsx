@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List as Ls } from 'antd';
+import { List as Ls, Button } from 'antd';
 import { ErrorBoundary } from '../ErrorBoundary';
+import s from './style.module.css';
 
 const { Item } = Ls;
 
@@ -16,9 +17,14 @@ export const List = (props) => {
 			<Item
 				key={id}
 				onClick={() => onItemSelected(id)}
-				style={{ 'cursor': 'pointer' }}
 			>
-				{label}
+				<Button
+					block
+					className={s.list__button}
+					type="link"
+				>{label}
+				</Button>
+
 			</Item>
 		);
 	};
