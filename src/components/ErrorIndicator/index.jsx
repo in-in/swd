@@ -1,15 +1,21 @@
 import React from 'react';
-import { Typography } from 'antd';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { AlertOutlined } from '@ant-design/icons';
+import { Typography, Result } from 'antd';
 
-const { Title } = Typography;
+const { Title, Paragraph } = Typography;
 
 export const ErrorIndicator = () => (
 	<>
-		<AlertOutlined type="alert" theme="twoTone" style={{ 'fontSize': '3em' }} />
-		<Title level={4}>Achtung!</Title>
-		<span>something went wrong</span>
-		<span>(but we already sent droids to fix it)</span>
+		<Result
+			status="warning"
+			title={(
+				<Title level={2}>Achtung!</Title>
+			)}
+			subTitle={(
+				<>
+					<Paragraph strong type="warning">Something went wrong</Paragraph>
+					<Paragraph type="secondary"> (but we already sent droids <span role="img" aria-label="Robot">🤖</span> to fix it)</Paragraph>
+				</>
+			)}
+		/>
 	</>
 );
