@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List } from 'antd';
+import { List, Typography } from 'antd';
 
 const { Item } = List;
+const { Text } = Typography;
 
 export const Record = ({ item, field, label }) => (
 	<Item>
-		<span>{label}</span>
-		<span>{item[field]}</span>
+		<Text>{label}:&nbsp;</Text>
+		<Text ellipsis>{item[field]}</Text>
 	</Item>
 );
 
