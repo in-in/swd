@@ -11,7 +11,7 @@ const { Text } = Typography;
 
 const renderNameAndGender = ({ name, gender }) => (
 	<>
-		<Text strong>{name}</Text>
+		<Text ellipsis strong>{name}</Text>
 		<div>
 			<Text type="secondary">gender: </Text>
 			<Text code>{gender}</Text>
@@ -20,7 +20,7 @@ const renderNameAndGender = ({ name, gender }) => (
 );
 const renderNameAndCrew = ({ name, crew }) => (
 	<>
-		<Text strong>{name}</Text>
+		<Text ellipsis strong>{name}</Text>
 		<div>
 			<Text type="secondary">crew: </Text>
 			<Text code>{crew}</Text>
@@ -29,7 +29,7 @@ const renderNameAndCrew = ({ name, crew }) => (
 );
 const renderNameAndDiameter = ({ name, diameter }) => (
 	<>
-		<Text strong>{name}</Text>
+		<Text ellipsis strong>{name}</Text>
 		<div>
 			<Text type="secondary">diameter: </Text>
 			<Text code>{diameter}</Text>
