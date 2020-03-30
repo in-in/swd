@@ -12,7 +12,7 @@ import { ErrorIndicator } from '../ErrorIndicator';
 import s from './style.module.css';
 
 const { Meta } = Card;
-const { Title } = Typography;
+const { Title, Text } = Typography;
 const { Item } = List;
 
 const HeroContent = ({ planet }) => {
@@ -22,15 +22,15 @@ const HeroContent = ({ planet }) => {
 
 	const data = [
 		{
-			'name': 'Diameter:',
+			'name': 'Diameter',
 			'value': diameter,
 		},
 		{
-			'name': 'Population:',
+			'name': 'Population',
 			'value': population,
 		},
 		{
-			'name': 'Rotation Period:',
+			'name': 'Rotation Period',
 			'value': rotationPeriod,
 		},
 	];
@@ -53,8 +53,8 @@ const HeroContent = ({ planet }) => {
 				dataSource={data}
 				renderItem={(item) => (
 					<Item>
-						<span>{item.name}&nbsp;</span>
-						<span>{item.value}</span>
+						<Text>{item.name}:&nbsp;</Text>
+						<Text ellipsis>{item.value}</Text>
 					</Item>
 				)}
 			/>
