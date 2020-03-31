@@ -47,7 +47,7 @@ const HeroContent = ({ planet }) => {
 			)}
 		>
 			<Meta
-				title={<Title level={4}>{name}</Title>}
+				title={<Title level={2}>{name}</Title>}
 			/>
 			<List
 				dataSource={data}

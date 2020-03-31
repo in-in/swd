@@ -78,7 +78,7 @@ export class Details extends Component {
 							)}
 						>
 							<Meta
-								title={<Title level={4}>{name}</Title>}
+								title={<Title level={2}>{name}</Title>}
 							/>
 							<List
 								dataSource={children}
