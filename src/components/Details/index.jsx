@@ -73,7 +73,7 @@ export class Details extends Component {
 							cover={(
 								<img
 									src={`${image}`}
-									alt={`${name}`}
+									alt={`${name}.`}
 								/>
 							)}
 						>

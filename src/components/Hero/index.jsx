@@ -42,7 +42,7 @@ const HeroContent = ({ planet }) => {
 			cover={(
 				<img
 					src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-					alt={`Planet ${name}`}
+					alt={`Planet ${name}.`}
 				/>
 			)}
 		>
