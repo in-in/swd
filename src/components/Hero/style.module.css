@@ -9,4 +9,9 @@
 		max-width: 100%;
 		height: auto;
 	}
+
+	.hero_content > div:last-of-type {
+		width: 40%;
+		flex-shrink: 0;
+	}
 }
