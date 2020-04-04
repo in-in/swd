@@ -24,3 +24,14 @@
 	padding-left: 5vw;
 	padding-right: 5vw;
 }
+
+@media print {
+	header.ant-layout-header {
+		display: none;
+	}
+
+	.ant-col-md-12 {
+		max-width: 50%;
+		flex-basis: 50%;
+	}
+}

@@ -1,4 +1,4 @@
-@media (min-width: 576px) {
+@media (min-width: 576px), print {
 	.hero_content {
 		display: flex;
 		justify-content: center;
