@@ -35,3 +35,15 @@
 		flex-basis: 50%;
 	}
 }
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	::before,
+	::after {
+		scroll-behavior: auto !important;
+		transition-duration: 0.001s !important;
+		animation-duration: 0.001s !important;
+		animation-iteration-count: 1 !important;
+	}
+}
+
