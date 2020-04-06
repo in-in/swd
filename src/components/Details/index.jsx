@@ -70,6 +70,10 @@ export class Details extends Component {
 					: (
 						<Card
 							bordered={false}
+							bodyStyle={{
+								'paddingLeft': '1em',
+								'paddingRight': '1em',
+							}}
 							cover={(
 								<img
 									src={`${image}`}
