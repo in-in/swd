@@ -13,7 +13,7 @@ const renderNameAndGender = ({ name, gender }) => (
 	<>
 		<Text ellipsis strong>{name}</Text>
 		<div>
-			<Text type="secondary">gender: </Text>
+			<Text>gender: </Text>
 			<Text code>{gender}</Text>
 		</div>
 	</>
@@ -22,7 +22,7 @@ const renderNameAndCrew = ({ name, crew }) => (
 	<>
 		<Text ellipsis strong>{name}</Text>
 		<div>
-			<Text type="secondary">crew: </Text>
+			<Text>crew: </Text>
 			<Text code>{crew}</Text>
 		</div>
 	</>
@@ -31,7 +31,7 @@ const renderNameAndDiameter = ({ name, diameter }) => (
 	<>
 		<Text ellipsis strong>{name}</Text>
 		<div>
-			<Text type="secondary">diameter: </Text>
+			<Text>diameter: </Text>
 			<Text code>{diameter}</Text>
 		</div>
 	</>

@@ -12,8 +12,8 @@ export const ErrorIndicator = () => (
 			)}
 			subTitle={(
 				<>
-					<Paragraph strong type="warning">Something went wrong</Paragraph>
-					<Paragraph type="secondary"> (but we already sent droids <span role="img" aria-label="Robot">🤖</span> to fix it)</Paragraph>
+					<Paragraph strong>Something went wrong</Paragraph>
+					<Paragraph> (but we already sent droids <span role="img" aria-label="Robot">🤖</span> to fix it)</Paragraph>
 				</>
 			)}
 		/>

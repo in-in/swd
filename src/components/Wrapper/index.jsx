@@ -75,7 +75,7 @@ export class Wrapper extends Component {
 						</Switch>
 					</Content>
 					<Footer className="container">
-						<Text type="secondary">built with the Force</Text>
+						<Text>built with the Force</Text>
 					</Footer>
 				</Router>
 			</SwapiServiceProvider>
