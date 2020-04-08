@@ -74,7 +74,16 @@ export class Wrapper extends Component {
 							<Route component={Page404} />
 						</Switch>
 					</Content>
-					<Footer className="container">
+					<Footer
+						className="container"
+						style={{
+							'display': 'flex',
+							'justifyContent': 'space-between',
+						}}
+					>
+						<Text>&copy; <a href="https://github.com/in-in">in-in</a>
+							, 2020
+						</Text>
 						<Text>built with the Force</Text>
 					</Footer>
 				</Router>
