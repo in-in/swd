@@ -20,7 +20,7 @@
 
 - Configuration: [Create React App](https://github.com/facebook/create-react-app)
 - UI: [Ant Design](https://github.com/ant-design/ant-design/)
-- API: [The Star Wars API](https://swapi.co/)
+- API: [The Star Wars API](https://swapi.dev/)
 - Images source: [Star Wars: A Visual Guide](https://starwars-visualguide.com)
 - Based on [Udemy course](https://www.udemy.com/course/pro-react-redux/)
 ---

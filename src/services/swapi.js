@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 export class SwapiService {
-	apiBase = 'https://swapi.co/api/'
+	apiBase = 'https://swapi.dev/api/'
 
 	imageBase = 'https://starwars-visualguide.com/assets/img/'
 
@@ -83,7 +83,7 @@ export class SwapiService {
 	}
 
 	getPlanet = async (id) => {
-		const planet = await this.getResource(`planets/${id}`);
+		const planet = await this.getResource(`planets/${id}/`);
 		return SwapiService.transformPlanet(planet);
 	}
 
